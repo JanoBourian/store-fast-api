@@ -1,0 +1,10 @@
+alembic
+asyncpg
+black
+databases
+environs
+fastapi
+psycopg2-binary
+pydantic
+sqlalchemy
+uvicorn
