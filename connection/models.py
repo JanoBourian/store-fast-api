@@ -1,5 +1,14 @@
 import sqlalchemy
-from sqlalchemy import MetaData, Table, Column, Integer, String, DateTime, ForeignKey
+from sqlalchemy import (
+    MetaData,
+    Table,
+    Column,
+    Integer,
+    String,
+    DateTime,
+    ForeignKey,
+    Boolean,
+)
 from .database import database_url
 
 meta = MetaData()
@@ -8,16 +17,25 @@ Colors = Table(
     "colors",
     meta,
     Column("id", Integer, primary_key=True),
-    Column("name", String(10), nullable=False, unique = True),
-    Column("description", String(255))
+    Column("name", String(10), nullable=False, unique=True),
+    Column("description", String(255)),
 )
 
 Sizes = Table(
     "sizes",
     meta,
     Column("id", Integer, primary_key=True),
-    Column("name", String(10), nullable=False, unique = True),
-    Column("description", String(255))
+    Column("name", String(10), nullable=False, unique=True),
+    Column("description", String(255)),
+)
+
+Roles = Table(
+    "roles",
+    meta,
+    Column("id", Integer, primary_key=True),
+    Column("name", String(20), nullable=False, unique=True),
+    Column("description", String(255)),
+    Column("active", Boolean(True), nullable=False),
 )
 
 Users = Table(
@@ -26,8 +44,8 @@ Users = Table(
     Column("id", Integer, primary_key=True),
     Column("email", String(120), unique=True),
     Column("password", String(255), nullable=False),
-    Column("full_name", String(200), nullable=False, unique = True),
-    Column("phone", String(13), nullable=False, unique = True),
+    Column("full_name", String(200), nullable=False, unique=True),
+    Column("phone", String(13), nullable=False, unique=True),
     Column(
         "created_at", DateTime, nullable=False, server_default=sqlalchemy.func.now()
     ),
@@ -37,6 +55,11 @@ Users = Table(
         nullable=False,
         server_default=sqlalchemy.func.now(),
         onupdate=sqlalchemy.func.now(),
+    ),
+    Column(
+        "role_id",
+        ForeignKey("roles.id"),
+        nullable=False
     ),
 )
 
