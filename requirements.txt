@@ -2,8 +2,10 @@ alembic
 asyncpg
 black
 databases
+email-validator
 environs
 fastapi
+passlib[bcrypt]
 psycopg2-binary
 pydantic
 sqlalchemy

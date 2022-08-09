@@ -1,6 +1,7 @@
 import databases
 from config.config import env
 
+
 def get_database_url() -> str:
     ## Local vars
     drivername = "postgresql"
@@ -24,5 +25,6 @@ def get_database_url() -> str:
     )
     return connection
 
+
 database_url = get_database_url()
-database = databases.Database(database_url)    
+database = databases.Database(database_url)

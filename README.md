@@ -48,3 +48,29 @@ psql -h localhost -p 5432 -U postgres -W
 \d
 \dt
 ```
+
+# Alembic
+
+Alembic is our migration manager
+
+In alembic.ini 
+
+```ini
+sqlalchemy.url 
+```
+
+In migrations/env.py
+```python
+from connection.models import meta
+target_metadata = meta
+```
+
+```bash
+alembic init migrations
+# Delete or change information
+alembic revision --autogenerate -m "Initial"
+alembic upgrade head
+# Delete or change information into models file
+alembic revision --autogenerate -m "Delete Test table"
+alembic upgrade head
+```

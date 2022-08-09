@@ -1,6 +1,7 @@
 import os
 from environs import Env
 
+
 def env_reader() -> Env:
     env = Env()
     if os.path.isfile("config/.env.local"):
@@ -8,5 +9,6 @@ def env_reader() -> Env:
     else:
         env.read_env("config/.env.cloud")
     return env
+
 
 env = env_reader()
