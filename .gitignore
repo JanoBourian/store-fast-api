@@ -5,3 +5,4 @@ __pycache__/
 *.ini
 migrations/
 .vscode/
+__init__.py
