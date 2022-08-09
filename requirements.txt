@@ -8,6 +8,7 @@ fastapi
 passlib[bcrypt]
 psycopg2-binary
 pydantic
+pyjwt
 pytest
 requests
 sqlalchemy

@@ -74,3 +74,11 @@ alembic upgrade head
 alembic revision --autogenerate -m "Delete Test table"
 alembic upgrade head
 ```
+
+# pyjwt
+
+Steps
+
+* pip install pyjwt
+* define JWT secret in local env
+* create the token
