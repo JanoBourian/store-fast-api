@@ -7,6 +7,7 @@ from typing import List, Optional
 
 class ColorsBase(BaseModel):
     name:str
+    description: Optional[str]
     
     @root_validator
     def correct_length_id(cls, values):
@@ -25,7 +26,31 @@ class ColorsOut(ColorsBase):
 
     class Config:
         orm_mode = True
+
+## Clothes
+
+class SizesBase(BaseModel):
+    name:str
+    description: Optional[str]
+    
+    @root_validator
+    def correct_length_id(cls, values):
+        name = values.get("name")
+        if len(name) > 0 and len(name)<=10 and name.count(" ") == 0:
+            return values
+        raise ValueError('Field name in Color is incorrect')
+
+class SizesIn(SizesBase):
         
+    class Config:
+        orm_mode = True
+
+class SizesOut(SizesBase):
+    id: int
+
+    class Config:
+        orm_mode = True
+
 ## Users
 
 class EmailField(str):

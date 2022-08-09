@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from connection.database import database
-from .routers import colors, users
+from .routers import colors, users, clothes
 
 app = FastAPI()
 
@@ -22,3 +22,4 @@ async def index():
 # Router
 app.include_router(colors.router)
 app.include_router(users.router)
+app.include_router(clothes.router)
