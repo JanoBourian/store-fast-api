@@ -56,23 +56,27 @@ class SizesOut(SizesBase):
     class Config:
         orm_mode = True
 
+
 ## Roles
+
 
 class RoleBase(BaseModel):
     name: str
     description: Optional[str]
     active: bool
 
+
 class RoleIn(RoleBase):
-        
     class Config:
         orm_mode = True
 
+
 class RoleOut(RoleBase):
-    id:int
-    
+    id: int
+
     class Config:
         orm_mode = True
+
 
 ## Users
 

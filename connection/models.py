@@ -56,11 +56,7 @@ Users = Table(
         server_default=sqlalchemy.func.now(),
         onupdate=sqlalchemy.func.now(),
     ),
-    Column(
-        "role_id",
-        ForeignKey("roles.id"),
-        nullable=False
-    ),
+    Column("role_id", ForeignKey("roles.id"), nullable=False),
 )
 
 Clothes = Table(

@@ -25,4 +25,3 @@ async def create_user(request: UsersSignIn):
     created_value = await database.fetch_one(Users.select().where(Users.c.id == id_))
     token = create_access_token(created_value)
     return {"token": token}
-    # return created_value
