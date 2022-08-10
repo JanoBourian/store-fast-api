@@ -48,4 +48,13 @@ class CustomHTTPBearer(HTTPBearer):
             )
 
 
+def is_admin(request: Request):
+    user = request.state.user
+    if not user or user["role"] not in ("admin"):
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="You do not have permission for this resource",
+        )
+
+
 oauth2_scheme = CustomHTTPBearer()

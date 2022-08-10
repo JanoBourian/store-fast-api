@@ -1,13 +1,13 @@
 from fastapi import APIRouter, Response, status, Depends
 from connection.models import Sizes
 from connection.database import database
-from auth.auth import oauth2_scheme
+from auth.auth import oauth2_scheme, is_admin
 from schemas.schemas import SizesIn, SizesOut
 
 router = APIRouter(tags=["sizes"], prefix="/sizes")
 
 
-@router.get("/", dependencies=[Depends(oauth2_scheme)])
+@router.get("/", dependencies=[Depends(oauth2_scheme), Depends(is_admin)])
 async def get_all_clothes(response: Response):
     query = Sizes.select()
     get_values = await database.fetch_all(query)
